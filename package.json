@@ -1,0 +1,27 @@
+{
+  "name": "git-pull",
+  "version": "1.0.0",
+  "description": "",
+  "main": "git-pull.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mst5295/node-git-pull.git"
+  },
+  "author": "MST",
+  "licenses": [
+    {
+      "type": "BSD 2-clause 'Simplified' License",
+      "url": "https://github.com/mst5295/node-git-pull/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/mst5295/node-git-pull/issues"
+  },
+  "homepage": "https://github.com/mst5295/node-git-pull#readme",
+  "devDependencies": {
+    "shelljs": "^0.7.8"
+  }
+}
