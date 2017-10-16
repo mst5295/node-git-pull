@@ -4,7 +4,7 @@
   "description": "",
   "main": "git-pull.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/mst5295/node-git-pull#readme",
   "devDependencies": {
+    "jasmine-node": "^1.14.5",
     "shelljs": "^0.7.8"
+  },
+  "dependencies": {
+    "http-client": "^4.3.1"
   }
 }
