@@ -1,15 +1,17 @@
 var pull = require('../git-pull.js'),
-    link = "",
-    local = "";
-const { createFetch, createStack, enableRecv, header, base, parse } = require('http-client');
+    link_rigth = "",
+    link_false = "",
+    local = "./";
 
 describe('Git Pull', function(){
     describe('pulls a repo on Github', function(){
-        it("returns a code = 0 and echo no message", function(done){
-
+        it("returns a code = 0", function(done){
+            expect(pull(link_rigth, local)).toBe(0);
+            done;
         });
-        it("returns a code != 0 and echo a message" , function(done){
-            
+        it("returns a code != 0" , function(done){
+            expect(pull(link_false, local)).isNot(0);
+            done;
         });
     })
 });

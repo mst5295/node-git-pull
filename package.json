@@ -24,8 +24,5 @@
   "devDependencies": {
     "jasmine-node": "^1.14.5",
     "shelljs": "^0.7.8"
-  },
-  "dependencies": {
-    "http-client": "^4.3.1"
   }
 }
