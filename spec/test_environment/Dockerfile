@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 
 COPY ./assists/id_rsa /usr/src/app
 COPY ./assists/id_rsa.pub /usr/src/app
-COPY .assists/config /usr/src/app
+COPY ./assists/config /usr/src/app
 
 ENV GIT_SSH = "ssh -F /usr/src/app"
 
