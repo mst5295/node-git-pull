@@ -1,0 +1,2 @@
+Host github.com
+	IdentityFile /usr/src/app/id_rsa
