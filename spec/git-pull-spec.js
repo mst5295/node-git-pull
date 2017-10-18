@@ -1,6 +1,6 @@
 var pull = require('../git-pull.js'),
-link_rigth = "https://github.com/mst5295/testrepo_gitPull",
-link_false = "https://github.com/mst5295/testrepogitPull",
+link_rigth = "https://github.com/mst5295/testrepo_gitPull.git",
+link_false = "https://github.com/mst5295/testrepogitPull.git",
 local = "./";
 
 describe('Git Pull', function(){
@@ -10,7 +10,7 @@ describe('pulls a repo on Github', function(){
         done;
     });
     it("returns a code != 0" , function(done){
-        expect(pull(link_false, local).code).isNot(0);
+        expect(pull(link_false, local)).isNot(0);
         done;
     });
 })
