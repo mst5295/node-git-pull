@@ -1,6 +1,6 @@
 var pull = require('../git-pull.js'),
-link_rigth = "git+https://github.com/mst5295/testrepo_gitPull.git",
-link_false = "git+https://github.com/mst5295/testrepogitPull.git",
+link_rigth = "https://github.com/mst5295/testrepo_gitPull.git",
+link_false = "https://github.com/mst5295/testrepogitPull.git",
 local = "./";
 
 describe('Git Pull', function(){
