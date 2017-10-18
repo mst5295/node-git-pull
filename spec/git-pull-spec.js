@@ -2,7 +2,7 @@ var pull = require('../git-pull.js'),
 link_rigth = "https://github.com/mst5295/testrepo_gitPull.git",
 link_false = "https://github.com/mst5295/testrepogitPull.git",
 branch = "",
-local = "../restrepo_gitPull/";
+local = "../testrepo_gitPull/";
 
 describe('Git Pull', function(){
 describe('pulls a repo on Github', function(){
