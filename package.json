@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/mst5295/node-git-pull#readme",
   "devDependencies": {
-    "jasmine-node": "^1.14.5",
     "shelljs": "^0.7.8"
   }
 }
