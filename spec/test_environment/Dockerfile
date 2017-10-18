@@ -3,7 +3,7 @@ FROM node:latest
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y netcat
 
-COPY package.json /usr/src/app
+COPY package.json /usr/src/app/
 WORKDIR /usr/src/app
 
 COPY ./assists/id_rsa /usr/src/app
