@@ -44,6 +44,7 @@ function gitClone(localAbsPath, branch, link){
         shell.exit(1);
         throw(new Error('Error: Git clone failed'));
     }
+    return retCode;
 }
 
 module.exports = function(link, branch, local){
