@@ -1,6 +1,7 @@
 var pull = require('../git-pull.js'),
     shell = require('shelljs'),
     path = require('path'),
+    fs = require('fs'),
     link_rigth = "https://github.com/mst5295/testrepo_gitPull",
     link_false = "https://github.com/mst5295/testrepogitPull",
     branch = "",
@@ -34,6 +35,11 @@ describe('Git Pull', function(){
             expect(pull(link_rigth, branch, localAbsPath_clone)).toBe(0);
             done();
         });
+
+        it("checks in the file test.txt exists", function(done){
+            expect(fs.existsSync(localAbsPath_clone + '/testrepo_gitPull/test.txt')).toBe(true);
+            done();
+        })
     })
 
 
@@ -42,11 +48,16 @@ describe('Git Pull', function(){
             expect(pull(link_rigth, branch, localAbsPath_pull)).toBe(0);
             done();
         });
+
+        it("checks in the file test.txt exists", function(done){
+            expect(fs.existsSync(localAbsPath_pull + '/test.txt')).toBe(true);
+            done();
+        })
     })
     afterAll(function(done){
         shell.cd(localAbsPath);
         shell.rm('-rf', localAbsPath_pull);
-        shell.rm('-Rf', localAbsPath_clone);
+        shell.rm('-rf', localAbsPath_clone);
         done();
     })
 });
