@@ -15,8 +15,8 @@ RUN npm install https://github.com/mst5295/node-git-pull --save-dev
 RUN npm install shelljs --save-dev
 RUN npm install
 
-COPY . /usr/src/app
+COPY ../../../node-git-pull/ /usr/src/app
 
-ENV GIT_SSH = "ssh -F /usr/src/app"
+ENV GIT_SSH = "ssh -F /usr/src/app/node-git-pull/spec/test_environment/assists/"
 
-CMD cd /usr/src/app/node_modules/git-pull/ && npm test
+CMD cd /usr/src/app/node-git-pull/ && npm test
