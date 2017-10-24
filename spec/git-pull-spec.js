@@ -2,8 +2,7 @@ var pull = require('../git-pull.js'),
     shell = require('shelljs'),
     path = require('path'),
     fs = require('fs'),
-    link_rigth = "https://github.com/mst5295/testrepo_gitPull",
-    link_false = "https://github.com/mst5295/testrepogitPull",
+    link = "https://github.com/mst5295/testrepo_gitPull",
     branch = "",
     local= "./spec/test_environment/assists/testrepo_gitPull/",
     localAbsPath,
@@ -32,7 +31,7 @@ describe('Git Pull', function(){
     })
     describe('clone a repo on Github',function(){
         it("returns a code = 0 on success", function(done){
-            expect(pull(link_rigth, branch, localAbsPath_clone)).toBe(0);
+            expect(pull(link, branch, localAbsPath_clone)).toBe(0);
             done();
         });
 
@@ -45,7 +44,7 @@ describe('Git Pull', function(){
 
     describe('pulls a repo on Github', function(){
         it("returns a code = 0 on success", function(done){
-            expect(pull(link_rigth, branch, localAbsPath_pull)).toBe(0);
+            expect(pull(link, branch, localAbsPath_pull)).toBe(0);
             done();
         });
 
