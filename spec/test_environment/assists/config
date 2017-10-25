@@ -1,2 +1,4 @@
 Host github.com
-	IdentityFile /usr/src/app/id_rsa
+	HostName github.com
+	User mst5295
+	IdentityFile /usr/src/app/spec/test_environment/assists/id_rsa

@@ -29,6 +29,7 @@ function checkPath(localAbsPath){
 
 function gitPull(localAbsPath, branch){
     shell.cd(localAbsPath);
+    shell.env["GIT_SSH_COMMAND"] = "ssh -FVV /usr/src/app/spec/test_environment/assists/config";
     var retCode = shell.exec('git pull ' + branch + ' --allow-unrelated-histories').code;
     if( retCode !== 0){
         shell.exit(1);
@@ -38,7 +39,11 @@ function gitPull(localAbsPath, branch){
 }
 
 function gitClone(localAbsPath, branch, link){
+    console.log("2");
     shell.cd(localAbsPath);
+    //shell.env["GIT_SSH_COMMAND"] = "ssh -FVV /usr/src/app/spec/test_environment/assists/config";
+    //shell.exec("git config core.sshCommand 'ssh -i '");
+    //shell.echo("$GIT_SSH_COMMAND");
     var retCode = shell.exec('git clone '+link+ ' ' + branch).code;
     if( retCode !== 0){
         shell.exit(1);
