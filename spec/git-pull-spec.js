@@ -2,7 +2,8 @@ var pull = require('../git-pull.js'),
     shell = require('shelljs'),
     path = require('path'),
     fs = require('fs'),
-    link = "git@github.com:mst5295/testrepo_gitPull.git",
+    //link = "git@github.com:mst5295/testrepo_gitPull.git",
+    link = "https://github.com/mst5295/testrepo_gitPull.git",
     branch = "",
     local= "./spec/test_environment/assists/testrepo_gitPull/",
     localAbsPath,
@@ -36,7 +37,7 @@ describe('Git Pull', function(){
         });
 
         it("checks in the file test.txt exists", function(done){
-            expect(fs.existsSync(localAbsPath_clone + '/testrepo_gitPull/test.txt')).toBe(true);
+            expect(fs.existsSync(localAbsPath_clone + '/test.txt')).toBe(true);
             done();
         })
     })

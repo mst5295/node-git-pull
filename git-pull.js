@@ -29,7 +29,6 @@ function checkPath(localAbsPath){
 
 function gitPull(localAbsPath, branch){
     shell.cd(localAbsPath);
-    shell.env["GIT_SSH_COMMAND"] = "ssh -FVV /usr/src/app/spec/test_environment/assists/config";
     var retCode = shell.exec('git pull ' + branch + ' --allow-unrelated-histories').code;
     if( retCode !== 0){
         shell.exit(1);
@@ -38,12 +37,30 @@ function gitPull(localAbsPath, branch){
     return retCode;
 }
 
+function gitInit(localAbsPath){
+    shell.cd(localAbsPath);
+    var retCode = shell.exec('git init').code;
+    if( retCode !== 0){
+        shell.exit(1);
+        throw(new Error('Error: Git init failed'));
+    }
+    return retCode;
+}
+
+function gitRemote(localAbsPath, link){
+    shell.cd(localAbsPath);
+    var retCode = shell.exec('git remote add -f -t master -m master origin '+ link).code;
+    if( retCode !== 0){
+        shell.exit(1);
+        throw(new Error('Error: Git remote failed'));
+    }
+    return retCode;
+
+}
+
 function gitClone(localAbsPath, branch, link){
     console.log("2");
     shell.cd(localAbsPath);
-    //shell.env["GIT_SSH_COMMAND"] = "ssh -FVV /usr/src/app/spec/test_environment/assists/config";
-    //shell.exec("git config core.sshCommand 'ssh -i '");
-    //shell.echo("$GIT_SSH_COMMAND");
     var retCode = shell.exec('git clone '+link+ ' ' + branch).code;
     if( retCode !== 0){
         shell.exit(1);
@@ -61,7 +78,9 @@ module.exports = function(link, branch, local){
         if(gitEvent == NEEDS_PULL){
             return gitPull(localAbsPath, branch);
         }else if(gitEvent == NEEDS_CLONE){
-            return gitClone(localAbsPath, branch, link);
+            gitInit(localAbsPath);
+            gitRemote(localAbsPath, link);
+            return gitPull(localAbsPath, branch);
         } else{
             throw(new Error('not a known git-event'));
         }
