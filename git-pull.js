@@ -27,6 +27,35 @@ function checkPath(localAbsPath){
     return NEEDS_PULL;
 }
 
+function gitFetch(localAbsPath){
+    shell.cd(localAbsPath);
+    var retCode = shell.exec('git fetch origin').code;
+    if( retCode !== 0){
+        shell.exit(1);
+        throw(new Error('Error: Git fetch failed'));
+    }
+    return retCode;
+}
+function gitCheckout(localAbsPath, branch){
+    shell.cd(localAbsPath);
+    var retCode = shell.exec('git checkout ' +branch).code;
+    if( retCode !== 0){
+        shell.exit(1);
+        throw(new Error('Error: Git checkout failed'));
+    }
+    return retCode;
+}
+
+function gitMerge(localAbsPath,branch){
+    shell.cd(localAbsPath);
+    var retCode = shell.exec('git merge ').code;
+    if( retCode !== 0){
+        shell.exit(1);
+        throw(new Error('Error: Git merge failed'));
+    }
+    return retCode;
+}
+
 function gitPull(localAbsPath, branch){
     shell.cd(localAbsPath);
     var retCode = shell.exec('git pull ' + branch + ' --allow-unrelated-histories').code;
@@ -76,11 +105,17 @@ module.exports = function(link, branch, local){
         localAbsPath = generateAbsPath(local);
         gitEvent = checkPath(localAbsPath);
         if(gitEvent == NEEDS_PULL){
-            return gitPull(localAbsPath, branch);
+            gitFetch(localAbsPath);
+            gitCheckout(localAbsPath, branch);
+            return gitMerge(localAbsPath);
+            //return gitPull(localAbsPath, branch);
         }else if(gitEvent == NEEDS_CLONE){
             gitInit(localAbsPath);
             gitRemote(localAbsPath, link);
-            return gitPull(localAbsPath, branch);
+            gitFetch(localAbsPath);
+            gitCheckout(localAbsPath, branch);
+            return gitMerge(localAbsPath);
+            //return gitPull(localAbsPath, branch);
         } else{
             throw(new Error('not a known git-event'));
         }
